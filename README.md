@@ -1,36 +1,10 @@
-# Local Nexus 3 Proxy
+# Consul Nexus 3
 
-A local Nexus 3 proxy for my laptop whose purpose is to cache dependencies for
-docker containers and locally provisioned servers.  I do a lot of provisioning
-of infrastructure locally on my laptop.  This Nexus 3 instance is to help
-alleviate the need for me to download a lot of duplicate dependencies from the
-internet across the local servers I provision.
+This demo shows an example of Nexus 3 using consul for service discovery.
 
-Different ways I provision locally include:
+This is a companion project for
+https://github.com/samrocketman/docker-compose-ha-consul-vault-ui
 
-- Docker
-- Docker Compose
-- Vagrant
-
-# Provisioning Nexus
-
-Start and automatically configure Nexus.
-
-    docker-compose up -d
-
-The [`docker-compose.yml`](docker-compose.yml) can use docker health checking to
-delay configuring Nexus.  Repository settings can be found in
-[`./settings/repositories.json`](./settings/repositories.json).
-
-# Configure Nexus
-
-Delete default repositories and blob stores.
-
-    ./scripts/upload_function.py --delete -rf ./functions/deleteAllConfigurations.groovy
-
-Configure new repositories and blob stores.
-
-    ./scripts/upload_function.py --delete -rf ./functions/nexusConfiguration.groovy -d ./settings/repositories.json
 
 # License
 
