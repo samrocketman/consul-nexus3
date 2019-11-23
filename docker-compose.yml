@@ -47,7 +47,7 @@ services:
         dnf makecache
         dnf install -y zip
         IP="$$(awk '/32 host/ && f ~ /172.16.238/ { print f; exit }; {f=$$2}' /proc/net/fib_trie)"
-        consul-agent.sh --consul-host consul.service.consul --advertise "$$IP" --service '{"service": {"name": "nexus", "tags": ["portal"], "port": 8081}}'
+        consul-agent.sh --consul-host consul.service.consul --advertise "$$IP" --service '{"service": {"name": "nexus", "tags": ["portal"], "port": 8081, "meta": {"title": "Nexus 3", "description": "Nexus artifact repository for hosting software."}}}'
         env | awk '/NEXUS|INSTALL4J|SONATYPE/ { print "export \""$$0"\"" }' > /tmp/environ.sh
         echo 'export NEXUS_CONTEXT=nexus' >> /tmp/environ.sh
         exec su -s /bin/sh -c "set -ex; source /tmp/environ.sh; exec $${SONATYPE_DIR}"/start-nexus-repository-manager.sh - nexus
