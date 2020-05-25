@@ -20,7 +20,7 @@ services:
         - /bin/bash
         - -ec
         - |
-          curl -fIu "admin:$$(</opt/sonatype/sonatype-work/nexus3/admin.password)" http://localhost:8081/nexus/service/metrics/ping
+          curl -fIu "admin:$$(</nexus-data/admin.password)" http://localhost:8081/nexus/service/metrics/ping
       interval: 45s
       timeout: 30s
       retries: 6
