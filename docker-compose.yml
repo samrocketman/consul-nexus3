@@ -15,7 +15,12 @@ services:
     image: 'sonatype/nexus3'
     init: true
     healthcheck:
-      test: ['CMD', 'curl', '-fIu', 'admin:admin123', 'http://localhost:8081/service/metrics/ping']
+      test:
+        - CMD
+        - /bin/bash
+        - -ec
+        - |
+          curl -fIu "admin:$$(</opt/sonatype/sonatype-work/nexus3/admin.password)" http://localhost:8081/nexus/service/metrics/ping
       interval: 45s
       timeout: 30s
       retries: 6
@@ -31,9 +36,11 @@ services:
       - consul-network
     volumes:
       - 'nexus-data:/nexus-data'
-      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/consul:/usr/local/bin/consul
-      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/jq:/usr/local/bin/jq
-      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/scripts/consul-agent.sh:/bin/consul-agent.sh
+      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/consul:/usr/local/bin/consul:ro
+      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/vault:/usr/local/bin/vault:ro
+      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/jq:/usr/local/bin/jq:ro
+      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/scripts/consul-agent.sh:/bin/consul-agent.sh:ro
+      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/scripts/vault-functions.sh:/usr/local/share/vault-functions.sh:ro
     dns:
       - 172.16.238.2
       - 172.16.238.3
