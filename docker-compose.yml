@@ -37,10 +37,10 @@ services:
     volumes:
       - 'nexus-data:/nexus-data'
       - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/consul:/usr/local/bin/consul:ro
-      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/vault:/usr/local/bin/vault:ro
       - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/jq:/usr/local/bin/jq:ro
       - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/scripts/consul-agent.sh:/bin/consul-agent.sh:ro
       - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/scripts/vault-functions.sh:/usr/local/share/vault-functions.sh:ro
+      - ${HOME}/git/github/docker-compose-ha-consul-vault-ui/vault:/usr/local/bin/vault:ro
     dns:
       - 172.16.238.2
       - 172.16.238.3
