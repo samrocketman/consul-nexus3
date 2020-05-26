@@ -16,7 +16,7 @@ healthy.
 [ASL v2](LICENSE)
 
 ```
-Copyright (c) 2018 Sam Gleske - https://github.com/samrocketman/docker-compose-local-nexus3-proxy
+Copyright (c) 2018-2020 Sam Gleske - https://github.com/samrocketman/docker-compose-local-nexus3-proxy
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
