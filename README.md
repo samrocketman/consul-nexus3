@@ -5,11 +5,32 @@ This demo shows an example of Nexus 3 using consul for service discovery.
 This is a companion project for
 https://github.com/samrocketman/docker-compose-ha-consul-vault-ui
 
+
+# Quickstart
+
+# Start the dependent cluster
+
 This assumes you have cloned this repository and
 docker-compose-ha-consul-vault-ui to `${HOME}/git/github`.
 
 docker-compose-ha-consul-vault-ui must be started before this project and be
-healthy.
+healthy.  Your browser should be configured for SOCKS according to the README so
+that you can visit the Vault and Nexus UI.
+
+# Start the service
+
+    docker-compose up -d
+    ./write-admin-pass-to-vault.sh
+
+# Get the admin username
+
+Visit the Vault UI to get the username and password for Nexus.  The credentials
+are written under the `docker/` kv store in Vault.
+
+* http://portal.service.consul/ and click on Vault UI
+
+Visit Nexus UI [the portal](http://portal.service.consul/) and click on the link
+for `Nexus 3` which should lead you to http://portal.service.consul/nexus/.
 
 # License
 
