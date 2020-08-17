@@ -20,7 +20,7 @@ services:
         - /bin/bash
         - -ec
         - |
-          curl -fIu "admin:$$(</nexus-data/admin.password)" http://localhost:8081/nexus/service/metrics/ping
+          curl -fI http://localhost:8081/nexus/service/rest/v1/status
       interval: 45s
       timeout: 30s
       retries: 6
