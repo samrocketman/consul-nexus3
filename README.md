@@ -26,7 +26,7 @@ that you can visit the Vault and Nexus UI.
 
 Execute the script to display Nexus admin credentials.
 
-    ./display_admin_password.sh
+    ./display-admin-password.sh
 
 # Log into web UI
 
