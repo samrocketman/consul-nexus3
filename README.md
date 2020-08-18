@@ -20,14 +20,15 @@ that you can visit the Vault and Nexus UI.
 # Start the service
 
     docker-compose up -d
-    ./write-admin-pass-to-vault.sh
+    ./rotate-admin-password.sh
 
-# Get the admin username
+# Get the admin password
 
-Visit the Vault UI to get the username and password for Nexus.  The credentials
-are written under the `docker/` kv store in Vault.
+Execute the script to display Nexus admin credentials.
 
-* http://portal.service.consul/ and click on Vault UI
+    ./display_admin_password.sh
+
+# Log into web UI
 
 Visit Nexus UI [the portal](http://portal.service.consul/) and click on the link
 for `Nexus 3` which should lead you to http://portal.service.consul/nexus/.
